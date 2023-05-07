@@ -1,4 +1,4 @@
-package com.swap.userservice.entities;
+package com.swap.ratingservice.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,13 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rating {
-	
-	private String ratingId;
-	private String userId;
+public class Hotel {
+
 	private String hotelId;
-	private int rating;
-	private String feedback;
-	private Hotel hotel;
-	
+	private String name;
+	private String location;
+	private String about;
 }
