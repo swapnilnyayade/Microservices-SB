@@ -15,3 +15,15 @@ spring:
 #    properties:                                              //No need to add, auto detected
 #      hibernate:
 #        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  application:
+    name: USER-SERVICE
+
+eureka:
+  instance:
+    prefer-ip-address: true                                   #On clicking  DESKTOP-EF2AUJ4:8081 on eureka you get ip instead hostname
+#  client:                                                     #No need to add default are true
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url: 
+#      defaultZone: http://localhost:8761/eureka

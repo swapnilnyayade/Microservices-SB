@@ -14,10 +14,10 @@ public interface HotelService {
 	// get all hotel
 	List<Hotel> getAllHotel();
 
-	// get single hotel of given id
-	Hotel getHotel(String id);
+	// get single hotel of given hotelId
+	Hotel getHotel(String hotelId);
 
-	Hotel updateHotel(String id, Hotel hotel);
+	Hotel updateHotel(String hotelId, Hotel hotel);
 
-	void deleteHotel(String id);
+	void deleteHotel(String hotelId);
 }

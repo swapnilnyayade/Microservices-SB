@@ -36,21 +36,21 @@ public class HotelController {
 		return ResponseEntity.ok(allHotel);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Hotel> obtainHotel(@PathVariable String id){
-		Hotel hotel = hotelService.getHotel(id) ;
+	@GetMapping("/{hotelId}")
+	public ResponseEntity<Hotel> obtainHotel(@PathVariable String hotelId){
+		Hotel hotel = hotelService.getHotel(hotelId) ;
 		return ResponseEntity.ok(hotel);
 	}
 	
-	@PutMapping("/{id}")
-	public ResponseEntity<Hotel> upgradeHotel(@PathVariable String id, @RequestBody Hotel hotel){
-		Hotel updatedHotel = hotelService.updateHotel(id, hotel);
+	@PutMapping("/{hotelId}")
+	public ResponseEntity<Hotel> upgradeHotel(@PathVariable String hotelId, @RequestBody Hotel hotel){
+		Hotel updatedHotel = hotelService.updateHotel(hotelId, hotel);
 		return ResponseEntity.ok(updatedHotel);
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> removeHotel(@PathVariable String id){
-		hotelService.deleteHotel(id);
+	@DeleteMapping("/{hotelId}")
+	public ResponseEntity<String> removeHotel(@PathVariable String hotelId){
+		hotelService.deleteHotel(hotelId);
 		return ResponseEntity.ok("Hotel successfully deleted!");
 	}
 

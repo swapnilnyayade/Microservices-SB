@@ -22,7 +22,7 @@ public class HotelServiceImpl implements HotelService {
 		// TODO Auto-generated method stub
 		//generate unique id
 		String randomId = UUID.randomUUID().toString();
-		hotel.setId(randomId);
+		hotel.setHotelId(randomId);
 		return hotelRepository.save(hotel);
 	}
 
@@ -33,15 +33,15 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
-	public Hotel getHotel(String id) {
+	public Hotel getHotel(String hotelId) {
 		// TODO Auto-generated method stub
-		return hotelRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Hotel with given id is not found on server!! " + id));
+		return hotelRepository.findById(hotelId).orElseThrow(() -> new ResourceNotFoundException("Hotel with given id is not found on server!! " + hotelId));
 	}
 
 	@Override
-	public Hotel updateHotel(String id, Hotel hotel) {
+	public Hotel updateHotel(String hotelId, Hotel hotel) {
 		// TODO Auto-generated method stub
-		 Hotel existingHotel = hotelRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Hotel with given id is not found on server!! " + id));;
+		 Hotel existingHotel = hotelRepository.findById(hotelId).orElseThrow(() -> new ResourceNotFoundException("Hotel with given id is not found on server!! " + hotelId));;
 	     existingHotel.setName(hotel.getName()); 
 	     existingHotel.setLocation(hotel.getLocation());
 	     existingHotel.setAbout(hotel.getAbout());
@@ -50,9 +50,9 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
-	public void deleteHotel(String id) {
+	public void deleteHotel(String hotelId) {
 		// TODO Auto-generated method stub
-		hotelRepository.deleteById(id);
+		hotelRepository.deleteById(hotelId);
 	}
 
 	
