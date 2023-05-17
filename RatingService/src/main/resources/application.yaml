@@ -2,19 +2,24 @@ server:
   port: 8083
   
 spring:
+
+  application:
+    name: RATING-SERVICE
+
   data:
     mongodb:
       uri: mongodb://localhost:27017
       database: ratingmicroservice
-   
-  application:
-    name: RATING-SERVICE
+    
+  config:
+    import:
+      configserver:http://localhost:8085
       
 
-eureka:
-  instance:
-    prefer-ip-address: true                                   #On clicking  DESKTOP-EF2AUJ4:8081 on eureka you get ip instead hostname
-#  client:                                                     #No need to add default are true
+#eureka:
+#  instance:
+#    prefer-ip-address: true                                   #On clicking  DESKTOP-EF2AUJ4:8081 on eureka you get ip instead hostname
+#  client:                                                     #No need to add default are true(all below)
 #    fetch-registry: true
 #    register-with-eureka: true
 #    service-url: 

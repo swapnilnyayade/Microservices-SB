@@ -19,6 +19,7 @@ import com.swap.userservice.entities.Hotel;
 import com.swap.userservice.entities.Rating;
 import com.swap.userservice.entities.User;
 import com.swap.userservice.exceptions.ResourceNotFoundException;
+import com.swap.userservice.externalservices.HotelService;
 import com.swap.userservice.repositories.UserRepository;
 import com.swap.userservice.services.UserService;
 
@@ -30,6 +31,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private HotelService hotelService;
 	
 	private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -70,11 +74,15 @@ public class UserServiceImpl implements UserService {
 		List<Rating> ratingList = ratings.stream().map(rating -> {
 		//api call to HOTEL SERVICE to get the hotel
 		//http://localhost:8082/hotels/fb41df3a-8dac-4a38-9b41-e8d69255a2f6
-		ResponseEntity<Hotel> forEntity	= restTemplate.getForEntity("http://HOTEL-SERVICE/hotels/" + rating.getHotelId(), Hotel.class);
-		Hotel hotel = forEntity.getBody();
 		
-		HttpStatusCode statusCode = forEntity.getStatusCode();
-		logger.info("response status code {} " + statusCode);
+//		ResponseEntity<Hotel> forEntity	= restTemplate.getForEntity("http://HOTEL-SERVICE/hotels/" + rating.getHotelId(), Hotel.class);
+//		Hotel hotel = forEntity.getBody();
+			
+//		Using Feign Client
+		Hotel hotel = hotelService.obtainHotel(rating.getHotelId());
+		
+//		HttpStatusCode statusCode = forEntity.getStatusCode();
+//		logger.info("response status code {} " + statusCode);
 		
 		rating.setHotel(hotel);
 		

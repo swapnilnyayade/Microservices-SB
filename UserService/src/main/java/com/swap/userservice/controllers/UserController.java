@@ -1,6 +1,7 @@
 package com.swap.userservice.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,11 @@ public class UserController {
 	public ResponseEntity<String> removeUser(@PathVariable String userId){
 		userService.deleteUser(userId);
 		return ResponseEntity.ok("User successfully deleted!");
+	}
+
+	@PostMapping("/user")
+	public ResponseEntity<String> postUser(Map<String, String> values){
+		return ResponseEntity.ok("User successfully posted"+ values.get("id"));
 	}
 
 	
